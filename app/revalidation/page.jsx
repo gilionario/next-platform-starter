@@ -1,79 +1,41 @@
-import { revalidateTag } from 'next/cache';
 import { Card } from 'components/card';
 import { Markdown } from 'components/markdown';
-import { SubmitButton } from 'components/submit-button';
 
 export const metadata = {
-    title: 'On-Demand Revalidation'
+    title: 'O Que Fazemos'
 };
 
-const tagName = 'randomWiki';
-const randomWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/random/summary';
-const maxExtractLength = 200;
-const revalidateTTL = 60;
+const companyStory = `
+## O Problema que Resolvemos
 
-const explainer = `
-This page perfoms a \`fetch\` on the server to get a random article from Wikipedia. 
-The fetched data is then cached with a tag named "${tagName}" and a maximum age of ${revalidateTTL} seconds.
+Na era digital, existe uma quantidade enorme de informações espalhadas pela internet. Empresas, profissionais e usuários comuns muitas vezes **perdem tempo e recursos** tentando encontrar dados relevantes de forma eficiente. Bases de dados desorganizadas, sites desatualizados e informações inacessíveis criam frustração e atrasam decisões importantes.
 
-~~~jsx
-const url = 'https://en.wikipedia.org/api/rest_v1/page/random/summary';
+## A Nossa Solução
 
-async function RandomArticleComponent() {
-    const randomArticle = await fetch(url, {
-        next: { revalidate: ${revalidateTTL}, tags: ['${tagName}'] }
-    });
-    // ...render
-}
-~~~
+A Enigmate nasceu para **tornar a informação acessível e confiável**. Criamos sistemas que **organizam e mantêm bases de dados extensas**, facilitando o acesso a conteúdos de forma rápida e intuitiva. Além disso, gerimos portais web que centralizam informações atualizadas periodicamente, oferecendo ferramentas de pesquisa inteligentes que conectam dados relevantes a quem precisa deles.
 
-After the set time has passed, the first request for this page would trigger its rebuild in the background. When the new page is ready, subsequent requests would return the new page - 
-see [\`stale-white-revalidate\`](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/).
+### Como Fazemos
 
-Alternatively, if the cache tag is explicitly invalidated by \`revalidateTag('${tagName}')\`, any page using that tag would be rebuilt in the background when requested.
+- Desenvolvemos **sistemas web personalizados** que consolidam dados dispersos.  
+- Implementamos **motores de pesquisa internos** para facilitar consultas precisas.  
+- Mantemos **portais e sites atualizados** com conteúdos de interesse.  
+- Oferecemos **serviços de TI e informática**, incluindo recuperação de dados, instalação de software e suporte técnico.
 
-In real-life applications, tags are typically invalidated when data has changed in an external system (e.g., the CMS notifies the site about content changes via a webhook), or after a data mutation made through the site.
-
-For this functionality to work, Next.js uses the [fine-grained caching headers](https://docs.netlify.com/platform/caching/) available on Netlify - but you can use these features on basically any Netlify site!
+> O nosso objetivo é transformar informação complexa e dispersa em **conhecimento acessível**, ajudando empresas e pessoas a tomar decisões de forma rápida e segura.
 `;
 
-export default async function Page() {
-    async function revalidateWiki() {
-        'use server';
-        revalidateTag(tagName);
-    }
-
+export default function Page() {
     return (
         <>
-            <h1 className="mb-8">Revalidation Basics</h1>
-            <Markdown content={explainer} className="mb-6" />
-            <form className="mb-8" action={revalidateWiki}>
-                <SubmitButton text="Click to Revalidate" />
-            </form>
-            <RandomWikiArticle />
+            <h1 className="mb-8 text-4xl font-bold">O Que Fazemos</h1>
+            <Markdown content={companyStory} className="mb-12 text-lg" />
+            <div className="flex justify-center">
+                <Card className="max-w-2xl p-6">
+                    <h3 className="text-2xl font-bold mb-2">Quer saber mais?</h3>
+                    <p>Entre em contacto connosco através do formulário de contacto ou dos nossos canais oficiais. Estamos prontos para ajudá-lo a organizar e utilizar melhor a informação.</p>
+                </Card>
+            </div>
         </>
     );
 }
 
-async function RandomWikiArticle() {
-    const randomWiki = await fetch(randomWikiUrl, {
-        next: { revalidate: revalidateTTL, tags: [tagName] }
-    });
-
-    const content = await randomWiki.json();
-    let extract = content.extract;
-    if (extract.length > maxExtractLength) {
-        extract = extract.slice(0, extract.slice(0, maxExtractLength).lastIndexOf(' ')) + ' [...]';
-    }
-
-    return (
-        <Card className="max-w-2xl">
-            <h3 className="text-2xl text-neutral-900">{content.title}</h3>
-            <div className="text-lg font-bold">{content.description}</div>
-            <p className="italic">{extract}</p>
-            <a target="_blank" rel="noopener noreferrer" href={content.content_urls.desktop.page}>
-                From Wikipedia
-            </a>
-        </Card>
-    );
-}
