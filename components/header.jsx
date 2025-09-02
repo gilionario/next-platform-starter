@@ -20,7 +20,10 @@ export function Header() {
                         <li key={index}>
                             <Link
                                 href={item.href}
-                                className="inline-flex px-1.5 py-1 sm:px-3 sm:py-2 font-bold uppercase no-underline hover:text-green-400"
+                                className="inline-flex px-1.5 py-1 sm:px-3 sm:py-2 font-bold uppercase no-underline"
+                                style={{ transition: 'color 0.2s', color: 'white' }}
+                                onMouseEnter={e => (e.currentTarget.style.color = '#06b38d')}
+                                onMouseLeave={e => (e.currentTarget.style.color = 'white')}
                             >
                                 {item.linkText}
                             </Link>
@@ -31,4 +34,5 @@ export function Header() {
         </nav>
     );
 }
+
 
