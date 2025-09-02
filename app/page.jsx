@@ -26,21 +26,5 @@ Oferecemos:
 
 > Tornamos a informação complexa simples e útil.
 `;
-
-export default function Home() {
-    return (
-        <div className="flex flex-col gap-12 sm:gap-16">
-            <section>
-                <h1 className="text-4xl font-bold mb-6"></h1>
-                <Markdown content={homeContent} className="text-lg mb-6" />
-                <Card className="p-6 max-w-2xl">
-                    <h3 className="text-2xl font-bold mb-2">Quer saber mais?</h3>
-                    <p>
-                        Explore as páginas <Link href="/o-que-fazemos" className="text-green-200 underline">O Que Fazemos</Link> e <Link href="/sobre" className="text-green-200 underline">Sobre</Link> para descobrir como podemos ajudá-lo.
-                    </p>
-                </Card>
-            </section>
-        </div>
-    );
 }
 
