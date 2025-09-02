@@ -26,5 +26,17 @@ Oferecemos:
 
 > Tornamos a informação complexa simples e útil.
 `;
+
+export default function HomePage() {
+  return (
+    <Card>
+      <Markdown>{homeContent}</Markdown>
+      <div className="mt-6">
+        <Link href="/about" className="text-green-400 hover:underline">
+          Saiba mais →
+        </Link>
+      </div>
+    </Card>
+  );
 }
 
