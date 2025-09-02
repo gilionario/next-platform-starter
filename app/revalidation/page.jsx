@@ -1,7 +1,6 @@
 import { Card } from 'components/card';
 import { Markdown } from 'components/markdown';
 
-
 const companyStory = `
 ## O Problema que Resolvemos
 
@@ -24,15 +23,21 @@ A Enigmate nasceu para **tornar a informação acessível e confiável**. Criamo
 export default function Page() {
     return (
         <>
-            <h1 className="mb-8 text-4xl font-bold">O Que Fazemos</h1>
-            <Markdown content={companyStory} className="mb-12 text-lg" />
+            <div className="prose prose-invert max-w-3xl mb-12 text-white">
+                <Markdown content={companyStory} className="prose-headings:text-green-400" />
+            </div>
             <div className="flex justify-center">
-                <Card className="max-w-2xl p-6">
-                    <h3 className="text-2xl font-bold mb-2">Quer saber mais?</h3>
-                    <p>Entre em contacto connosco através do formulário de contacto ou dos nossos canais oficiais. Estamos prontos para ajudá-lo a organizar e utilizar melhor a informação.</p>
+                <Card className="max-w-2xl p-6 bg-black">
+                    <h3 className="text-2xl font-bold mb-2 text-green-400">Quer saber mais?</h3>
+                    <p className="text-white">
+                        Entre em contacto connosco através do formulário de contacto ou dos nossos canais oficiais. 
+                        Estamos prontos para ajudá-lo a organizar e utilizar melhor a informação.
+                    </p>
                 </Card>
             </div>
         </>
     );
 }
+
+
 
