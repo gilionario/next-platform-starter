@@ -2,7 +2,7 @@ import { FeedbackForm } from 'components/feedback-form';
 import { Markdown } from 'components/markdown';
 
 export const metadata = {
-    title: 'Contact / About Enigmate'
+    title: 'Sobre'
 };
 
 const contactPageContent = `
@@ -27,7 +27,7 @@ Se tiver dúvidas, questões comerciais ou pedidos de suporte, use o formulário
 export default async function Page() {
     return (
         <>
-            <h1 className="mb-8 text-4xl font-bold">Contact / About Enigmate</h1>
+            <h1 className="mb-8 text-4xl font-bold">Sobre</h1>
             <Markdown content={contactPageContent} className="mb-12 text-lg" />
             <div className="flex justify-center">
                 <FeedbackForm />
