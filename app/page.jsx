@@ -5,7 +5,7 @@ import Link from 'next/link';
 export const metadata = { title: 'Home' };
 
 const homeContent = `
-## Bem-vindo à Enigmate
+## Bem-vindo
 
 Transformamos informação complexa em conhecimento acessível.  
 Ajudamos empresas e pessoas a encontrar, organizar e utilizar dados de forma **rápida e eficiente**.
@@ -31,7 +31,7 @@ export default function Home() {
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
             <section>
-                <h1 className="text-4xl font-bold mb-6">Enigmate</h1>
+                <h1 className="text-4xl font-bold mb-6"></h1>
                 <Markdown content={homeContent} className="text-lg mb-6" />
                 <Card className="p-6 max-w-2xl">
                     <h3 className="text-2xl font-bold mb-2">Quer saber mais?</h3>
