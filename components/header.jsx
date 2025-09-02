@@ -3,9 +3,9 @@ import Link from 'next/link';
 import enigmateLogo from 'public/enigmatelogo.png';
 
 const navItems = [
-    { linkText: 'Home', href: '/' },
-    { linkText: 'Atividade', href: '/atividade' },
-    { linkText: 'Sobre', href: '/sobre' }
+    { linkText: 'Inicio', href: '/' },
+    { linkText: 'Atividade', href: '/revalidation' },
+    { linkText: 'Sobre', href: '/classics' }
 ];
 
 export function Header() {
