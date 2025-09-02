@@ -2,30 +2,26 @@ import { FeedbackForm } from 'components/feedback-form';
 import { Markdown } from 'components/markdown';
 
 export const metadata = {
-    title: 'Classics'
+    title: 'Contact Us'
 };
 
-const explainer = `
-Some classic (and much-loved) Netlify features were born when most sites we hosted were fully static.
-For example, [Netlify Forms](https://docs.netlify.com/forms/setup/) do their magic based on automatic detection of specially-marked form tags in static HTML files. 
+const contactInfo = `
+## Contact Enigmate
 
-This has [required some adjustments](https://docs.netlify.com/forms/setup/#javascript-forms) for the age of SPA and SSR. 
-With modern Next.js versions, no page is truly static: as a developer, you can revalidate any page. However, you can still use our forms.
+Enigmate develops and operates a digital dating platform, connecting users for both serious relationships and casual interactions. Services include user account management, matchmaking algorithms, in-app messaging, and event-based features such as Speed Blind Dating. The platform generates revenue through subscription plans, premium features, and in-app transactions. Enigmate also conducts digital marketing, email campaigns, and influencer collaborations to grow its user base.
 
-Below is a simple form using \`fetch\` to submit its data to Netlify rather than using full-page navigation. To be detected, form tags must be hosted in static files -
-and \`public/__forms.html\` exists just for this purpose.
-
-Deploy this site to your Netlify account, [enable the forms feature in the UI](https://docs.netlify.com/forms/setup/#enable-form-detection), trigger a build and you can start collecting submissions.
+If you have questions, business inquiries, or support requests, please use the form below to reach us directly.
 `;
 
 export default async function Page() {
     return (
         <>
-            <h1 className="mb-8">Netlify Classics</h1>
-            <Markdown content={explainer} className="mb-12" />
+            <h1 className="mb-8 text-4xl font-bold">Contact Us</h1>
+            <Markdown content={contactInfo} className="mb-12 text-lg" />
             <div className="flex justify-center">
                 <FeedbackForm />
             </div>
         </>
     );
 }
+
