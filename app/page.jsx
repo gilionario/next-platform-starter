@@ -55,9 +55,6 @@ export default function HomePage() {
         </blockquote>
 
         <div className="mt-6">
-          <Link href="/about" className="text-green-400 hover:underline">
-            Saiba mais →
-          </Link>
         </div>
       </div>
     </Card>
