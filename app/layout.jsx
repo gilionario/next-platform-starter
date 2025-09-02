@@ -1,10 +1,11 @@
 import '../styles/globals.css';
 import { Header } from '../components/header';
+import { Footer } from '../components/footer'; // <- import footer
 
 export const metadata = {
     title: {
-        template: '%s', // dynamic page title
-        default: 'Enigmate' // default site title
+        template: '%s',
+        default: 'Enigmate'
     }
 };
 
@@ -19,11 +20,12 @@ export default function RootLayout({ children }) {
                     <div className="flex flex-col w-full max-w-5xl mx-auto grow">
                         <Header />
                         <main className="grow">{children}</main>
-                        {/* Footer removed */}
+                        <Footer /> {/* <- new footer here */}
                     </div>
                 </div>
             </body>
         </html>
     );
 }
+
 
