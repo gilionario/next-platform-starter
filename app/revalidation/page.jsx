@@ -1,9 +1,6 @@
 import { Card } from 'components/card';
 import { Markdown } from 'components/markdown';
 
-export const metadata = {
-    title: 'O Que Fazemos'
-};
 
 const companyStory = `
 ## O Problema que Resolvemos
